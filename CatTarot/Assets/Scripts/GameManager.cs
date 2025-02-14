@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject carta2;
     [SerializeField] public GameObject carta3;
     [SerializeField] public GameObject carta4;
-    public static int energia;
-    private int turno;
+    public int energia;
+    public int turno;
 
     void Start()
     {
@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ResetCartas(){
+        carta1.GetComponent<CartaFisica>().Seleccionada = false;
+        carta2.GetComponent<CartaFisica>().Seleccionada = false;
+        carta3.GetComponent<CartaFisica>().Seleccionada = false;
+        carta4.GetComponent<CartaFisica>().Seleccionada = false;
+    }
     void CrearMazo()
     {
         Carta Tower = Resources.Load<Carta>("Tower");

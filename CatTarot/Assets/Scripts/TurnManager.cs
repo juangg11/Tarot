@@ -4,6 +4,8 @@ public class TurnManager : MonoBehaviour
 {
     public bool jugadorTurno = true; 
     public BattleManager battleManager;
+    public PlayerTurnManager playerTurnManager;
+
 
     public void IniciarTurno()
     {
@@ -21,6 +23,7 @@ public class TurnManager : MonoBehaviour
     public void TerminarTurno()
     {
         jugadorTurno = !jugadorTurno; 
+        playerTurnManager.Reset();
         IniciarTurno();
     }
 

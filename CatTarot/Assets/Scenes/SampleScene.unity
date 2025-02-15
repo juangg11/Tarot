@@ -625,6 +625,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaMaxima: 100
   vidaActual: 0
+  fuerza: 0
+  agilidad: 0
 --- !u!1 &498821507
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +659,7 @@ MonoBehaviour:
   jugadorTurno: 1
   battleManager: {fileID: 1305573911}
   playerTurnManager: {fileID: 1470716575}
+  gameManager: {fileID: 1127092648}
 --- !u!4 &498821509
 Transform:
   m_ObjectHideFlags: 0
@@ -1067,8 +1070,8 @@ MonoBehaviour:
   carta2: {fileID: 25568103}
   carta3: {fileID: 1618200034}
   carta4: {fileID: 96824309}
+  jugador: {fileID: 472016994}
   energia: 0
-  turno: 0
 --- !u!4 &1127092649
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,6 +1245,7 @@ MonoBehaviour:
   energiaAcumulada: 0
   battleManager: {fileID: 1305573911}
   turnManager: {fileID: 498821508}
+  jugador: {fileID: 472016994}
 --- !u!4 &1470716576
 Transform:
   m_ObjectHideFlags: 0

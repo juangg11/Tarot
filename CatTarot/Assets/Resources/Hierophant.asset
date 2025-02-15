@@ -15,8 +15,10 @@ MonoBehaviour:
   nombre: Hierophant
   dano: 0
   costo: 2
-  proteccion: 20
+  proteccion: 5
   curacion: 0
   agilidad: 0
+  duracion: 0
+  fuerza: 0
   descripcion: Te protege con un escudo de 20 de salud.
   sprite: {fileID: -8379213288324035536, guid: b458c057bf437e54fa409561190eacf7, type: 3}

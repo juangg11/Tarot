@@ -8,13 +8,18 @@ public class Carta : ScriptableObject
     public int costo;
     public int proteccion;
     public int curacion;
-    public float agilidad;
+    public int agilidad;
+    public int duracion;
+    public int fuerza;
     public string descripcion;
     public Sprite sprite;
 
-    public virtual void UsarCarta(BattleManager battleManager)
+    public virtual void UsarCarta(BattleManager battleManager, Jugador jugador)
     {
         Debug.Log($"Usando carta: {nombre}");
         battleManager.AtacarEnemigo(dano);
+        jugador.agilidad += agilidad;
+        jugador.escudo += proteccion;
+        jugador.fuerza += fuerza;
     }
 }

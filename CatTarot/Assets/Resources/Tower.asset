@@ -17,6 +17,6 @@ MonoBehaviour:
   costo: 1
   proteccion: 0
   curacion: 0
-  agilidad: 0.2
-  descripcion: Te permite esquivar golpes los siguientes 3 turnos.
+  agilidad: 10
+  descripcion: Te permite esquivar golpes durante 2 turnos.
   sprite: {fileID: -4812098659053584605, guid: 6edf0c266b5a9164bb090ee8ab45259c, type: 3}

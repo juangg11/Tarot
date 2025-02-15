@@ -18,5 +18,7 @@ MonoBehaviour:
   proteccion: 0
   curacion: 0
   agilidad: 0
+  duracion: 0
+  fuerza: 2
   descripcion: Aumenta tu fuerza durante 3 turnos.
   sprite: {fileID: -2051137092593807599, guid: ea86e043ce46b2045964258299b01c24, type: 3}

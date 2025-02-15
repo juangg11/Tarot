@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject carta2;
     [SerializeField] public GameObject carta3;
     [SerializeField] public GameObject carta4;
+    [SerializeField] public Jugador jugador;
     public int energia;
-    public int turno;
-
+    public static int turno;
     void Start()
     {
         energia = 5;
         PonerEnergia();
-        turno = 1;
+        turno = 0;
         CrearMazo();
         SacarCartas();
         PonerCartas();
@@ -53,14 +53,15 @@ public class GameManager : MonoBehaviour
 
     public void UsarCarta(Carta carta)
     {
-        carta.UsarCarta(battleManager);
+        carta.UsarCarta(battleManager, jugador);
         turnManager.TerminarTurno();
     }
     public void PonerEnergia(){
         energiaTexto.text = "" + energia;
     }
-    void SacarCartas()
+    public void SacarCartas()
     {
+        cartasSacadas.Clear();
         while (cartasSacadas.Count < 4 && mazo.Count > 0) // Asegurarse de que el mazo no esté vacío
         {
             int random = Random.Range(0, mazo.Count); // Generar un índice aleatorio
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void PonerCartas()
+    public void PonerCartas()
     {
         carta1.GetComponent<SpriteRenderer>().sprite = cartasSacadas[0].sprite;
         carta2.GetComponent<SpriteRenderer>().sprite = cartasSacadas[1].sprite;

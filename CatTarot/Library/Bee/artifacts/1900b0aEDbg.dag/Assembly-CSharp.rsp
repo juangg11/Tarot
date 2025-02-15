@@ -442,9 +442,12 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.37f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/BattleManager.cs"
 "Assets/Scripts/Carta.cs"
+"Assets/Scripts/CartaFisica.cs"
+"Assets/Scripts/Enemigo.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/Hp.cs"
+"Assets/Scripts/Jugador.cs"
 "Assets/Scripts/PlayerTurnManager.cs"
-"Assets/Scripts/Raton.cs"
 "Assets/Scripts/TurnManager.cs"
 -langversion:9.0
 /deterministic

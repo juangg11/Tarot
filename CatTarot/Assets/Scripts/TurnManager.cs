@@ -5,13 +5,25 @@ public class TurnManager : MonoBehaviour
     public bool jugadorTurno = true; 
     public BattleManager battleManager;
     public PlayerTurnManager playerTurnManager;
+    public GameManager gameManager;
 
-
+    void Start()
+    {
+        if(gameManager == null)
+        {
+            gameManager = Object.FindFirstObjectByType<GameManager>();
+        }
+    }
+    
     public void IniciarTurno()
     {
         if (jugadorTurno)
         {
+            GameManager.turno++;
+            Debug.Log("Turno " + GameManager.turno);
             Debug.Log("Turno del Jugador");
+            gameManager.SacarCartas();
+            gameManager.PonerCartas();
         }
         else
         {
@@ -19,11 +31,9 @@ public class TurnManager : MonoBehaviour
             IniciarTurnoEnemigo();
         }
     }
-
     public void TerminarTurno()
     {
         jugadorTurno = !jugadorTurno; 
-        playerTurnManager.Reset();
         IniciarTurno();
     }
 

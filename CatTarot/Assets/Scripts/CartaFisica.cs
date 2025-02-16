@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class CartaFisica : MonoBehaviour
 {
     private Vector3 posIni;         // Posición inicial

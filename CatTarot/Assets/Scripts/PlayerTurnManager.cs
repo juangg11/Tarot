@@ -13,9 +13,10 @@ public class PlayerTurnManager : MonoBehaviour
     public BattleManager battleManager;
     public TurnManager turnManager;
     public Jugador jugador;
+
     void Start()
     {
-        if(gameManager == null)
+        if (gameManager == null)
         {
             gameManager = Object.FindFirstObjectByType<GameManager>();
         }
@@ -23,8 +24,9 @@ public class PlayerTurnManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {     
-        if(turnManager.jugadorTurno) TurnoJugador();
+    {
+        if (turnManager.jugadorTurno)
+            TurnoJugador();
     }
 
     public void TurnoJugador()
@@ -32,21 +34,36 @@ public class PlayerTurnManager : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Carta") && Input.GetMouseButton(0) && !hit.collider.gameObject.GetComponent<CartaFisica>().Seleccionada)
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("Carta") && Input.GetMouseButtonDown(0))
         {
-            int numeroCarta = hit.collider.gameObject.GetComponent<CartaFisica>().numeroCarta;
-            hit.collider.gameObject.GetComponent<CartaFisica>().Seleccionada = true;
-            jugada.Add(gameManager.cartasSacadas[numeroCarta]);
-            energiaAcumulada = energiaAcumulada + gameManager.cartasSacadas[numeroCarta].costo;
+            var cartaFisica = hit.collider.gameObject.GetComponent<CartaFisica>();
+
+            if (!cartaFisica.Seleccionada)
+            {
+                int numeroCarta = cartaFisica.numeroCarta;
+                cartaFisica.Seleccionada = true;
+                jugada.Add(gameManager.cartasSacadas[numeroCarta]);
+                energiaAcumulada += gameManager.cartasSacadas[numeroCarta].costo;
+            }
+            else
+            {
+                int numeroCarta = cartaFisica.numeroCarta;
+                cartaFisica.Seleccionada = false;
+                jugada.Remove(gameManager.cartasSacadas[numeroCarta]);
+                energiaAcumulada -= gameManager.cartasSacadas[numeroCarta].costo;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(energiaAcumulada > gameManager.energia){
+            if (energiaAcumulada > gameManager.energia)
+            {
                 Reset();
             }
-            else{
-                for(int i = 0; i < jugada.Count; i++){
+            else
+            {
+                for (int i = 0; i < jugada.Count; i++)
+                {
                     jugada[i].UsarCarta(battleManager, jugador);
                 }
                 Reset();
@@ -54,6 +71,7 @@ public class PlayerTurnManager : MonoBehaviour
             }
         }
     }
+
     public void ReiniciarEnergia()
     {
         energiaAcumulada = 0;
